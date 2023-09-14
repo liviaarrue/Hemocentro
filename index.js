@@ -63,7 +63,8 @@ NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
  
 `
      for(doador of arrayDoadores){
-       lista += `${doador.nome}    |  ${doador.idade}   |  ${doador.peso}  |      ${doador.tipoSangue}       |   ${doador.dataDoacao} `
+       lista += `${doador.nome.padEnd(20)}|${doador.idade.padEnd(5)}|${doador.peso.padEnd(5)}|${doador.tipoSangue.padEnd(5)}|${doador.dataDoacao.padEnd(10)}
+`
 
      }
 
@@ -121,7 +122,7 @@ function buscarPorData(){
 
 
    for(let doador of listagem){
-        listaData += `${doador.nome}    |  ${doador.idade}   |  ${doador.peso}  |      ${doador.tipoSangue}       |   ${doador.dataDoacao} `
+        listaData += `${doador.nome}|  ${doador.idade}   |  ${doador.peso}  |      ${doador.tipoSangue}       |   ${doador.dataDoacao} `
        }
      
   listaData += `-----------------------------------------------------------------`
