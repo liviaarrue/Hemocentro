@@ -1,4 +1,6 @@
-    arrayDoadores = ({nome: nome, idade: idade, peso: peso, tipoSangue: tipoSangue, dataDoacao: dataDoacao})
+arrayDoadores = [({nome: "Icaro", idade: "17", peso: "54", tipoSangue: "A-", dataDoacao: "17/09/2022"}),
+({nome: "Akame", idade: "15", peso: "73", tipoSangue: "O-", dataDoacao: "09/04/2023"}),
+({nome: "Bento", idade: "14", peso: "71", tipoSangue: "A+", dataDoacao: "23/12/2021"})]
 function menu() {
     var opcao = Number(
       prompt(`
@@ -42,30 +44,44 @@ function cadastrarDoador () {
     arrayDoadores.push({nome: nome, idade: idade, peso: peso, tipoSangue: tipoSangue, dataDoacao: dataDoacao})
 }
 
-function listarDoadores () {
+function listarDoadores () { let list = `--------------------
+LISTAGEM DE DOADORES:
+--------------------
+NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO 
+-----------------------------------------------------------------`
+for(doador of arrayDoadores){
+`${doador.nome}  |  ${doador.idade}  |   ${doador.peso}  |  ${doador.tipoSangue}   |  ${doador.dataDoacao}`
+
+list += `---------------------------------------------------`
+}
+let listagem = prompt(`${list}`) }
     let list = `--------------------
     LISTAGEM DE DOADORES:
     --------------------
-    NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
-    -----------------------------------------------------------------
-    João da Silva    |  25   |  70  |      AB-       |   01/01/2022  
-    Maria Santos     |  35   |  65  |      A+        |   03/02/2022  
-    José Almeida     |  45   |  80  |      O+        |   10/01/2022  
-    Ana Oliveira     |  27   |  58  |      B-        |   22/04/2022  
-    Carlos Silva     |  30   |  75  |      A-        |   14/03/2022  
+    NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO 
     -----------------------------------------------------------------`
-
 for(doador of arrayDoadores){
     `${doador.nome}  |  ${doador.idade}  |   ${doador.peso}  |  ${doador.tipoSangue}   |  ${doador.dataDoacao}`
 }
-list += `---------------------------------------------------`
-  let listagem = prompt()
 
+function buscarTipoSangue (){
+  let buscarSangue = prompt(`Tipo sanguíneo a procurar`)
+  const listaSangue = []
+
+  for(let doador of arrayDoadores){
+    if(doador.buscarTipoSangue.toUpperCase() <= buscarSangue.toUpperCase()){
+      listaSangue += ``
+    }
+  }
 }
 
-
- 
- 
-
 menu()
+
+
+
+
+
+
+
+
 
