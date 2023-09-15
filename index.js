@@ -20,17 +20,22 @@ function menu() {
     switch (opcao) {
       case 1:
         cadastrarDoador();
+        menu()
         break;
       case 2:
         listarDoadores();
+        menu()
         break;
       case 3:
         buscarTipoSangue();
+        menu()
         break;
       case 4:
         buscarPorData();
+        menu()
         break;
       case 5:
+        alert("Até a próxima.")
         //Rage quit/ n quero esse site ou simplesmente sair
         break;
 
@@ -48,8 +53,11 @@ function cadastrarDoador () {
     let peso = prompt("Insira seu peso:").toUpperCase()
     let tipoSangue = prompt("Digite seu tipo sanguíneo:").toUpperCase()
     let dataDoacao = prompt("Por fim, a data de sua última doação de sangue:").toUpperCase()
-
-    arrayDoadores.push({nome: nome, idade: idade, peso: peso, tipoSangue: tipoSangue, dataDoacao: dataDoacao})
+const doador = {nome: nome, idade: idade, peso: peso, tipoSangue: tipoSangue, dataDoacao: dataDoacao}
+   console.log(doador)
+arrayDoadores.push(doador)
+console.log(arrayDoadores)
+menu()
 }
 
 //CASE 2
@@ -63,7 +71,7 @@ NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
  
 `
    for(doador of arrayDoadores){
-     lista += `${doador.nome.padEnd(20)}|  ${doador.idade.padEnd(5)}|  ${doador.peso.padEnd(5)}|  ${doador.tipoSangue.padEnd(24)}|  ${doador.dataDoacao.padEnd(10)}      
+     lista += `${doador.nome.padEnd(20)}|  ${doador.idade.padEnd(5)}|  ${doador.peso.padEnd(5)}|  ${doador.tipoSangue.padEnd(24)}|${doador.dataDoacao.padEnd(10)}      
 
 `  }
 
@@ -92,7 +100,7 @@ function buscarTipoSangue (){
 
       for(let novoDoador of novoArray){
         lista += `
-   ${novoDoador.nome.padEnd(20)}|  ${novoDoador.idade.padEnd(5)}|  ${novoDoador.peso.padEnd(5)}|  ${novoDoador.tipoSangue.padEnd(24)}| ${novoDoador.dataDoacao.padEnd(10)}       
+   ${novoDoador.nome.padEnd(20)}|  ${novoDoador.idade.padEnd(5)}|  ${novoDoador.peso.padEnd(5)}|  ${novoDoador.tipoSangue.padEnd(24)}|${novoDoador.dataDoacao.padEnd(10)}       
   
     ` }
 
@@ -126,7 +134,7 @@ function buscarPorData(){
     }
 
   for(let novoDoador2 of novoArray2){
-    listaData += `${novoDoador2.nome.padEnd(20)}|  ${novoDoador2.idade.padEnd(5)}|  ${novoDoador2.peso.padEnd(5)}|  ${novoDoador2.tipoSangue.padEnd(30)}|  ${novoDoador2.dataDoacao.padEnd(10)}       
+    listaData += `${novoDoador2.nome.padEnd(20)}|  ${novoDoador2.idade.padEnd(5)}|  ${novoDoador2.peso.padEnd(5)}|  ${novoDoador2.tipoSangue.padEnd(30)}|${novoDoador2.dataDoacao.padEnd(10)}       
    
    ` }
      
