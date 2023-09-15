@@ -1,7 +1,7 @@
 arrayDoadores = [
-    {nome: "JOAO", idade: "17", peso: "80", tipoSangue: "A+", dataDoacao: "11/09/2008"},
-    {nome: "DAVI", idade: "27", peso: "70", tipoSangue: "O-", dataDoacao: "09/04/2023"},
-    {nome: "ERICK", idade: "69", peso: "60", tipoSangue: "A+", dataDoacao: "25/09/2019"}
+    {nome: "JOAO", idade: "17", peso: "80", tipoSangue: "A+", dataDoacao: "11/09/2011"},
+    {nome: "DAVI", idade: "27", peso: "70", tipoSangue: "O-", dataDoacao: "16/05/2006"},
+    {nome: "ERICK", idade: "69", peso: "60", tipoSangue: "A+", dataDoacao: "24/09/2018"}
 ]
 
 function menu() {
@@ -31,7 +31,7 @@ function menu() {
         buscarPorData();
         break;
       case 5:
-        
+        //Rage quit/ n quero esse site ou simplesmente sair
         break;
 
       default:
@@ -62,11 +62,10 @@ NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
 -----------------------------------------------------------------
  
 `
-     for(doador of arrayDoadores){
-       lista += `${doador.nome.padEnd(20)}|${doador.idade.padEnd(5)}|${doador.peso.padEnd(5)}|${doador.tipoSangue.padEnd(5)}|${doador.dataDoacao.padEnd(10)}
-`
+   for(doador of arrayDoadores){
+     lista += `${doador.nome.padEnd(20)}|  ${doador.idade.padEnd(5)}|  ${doador.peso.padEnd(5)}|  ${doador.tipoSangue.padEnd(24)}|  ${doador.dataDoacao.padEnd(10)}      
 
-     }
+`  }
 
 lista += `-----------------------------------------------------------------`
 
@@ -75,61 +74,69 @@ lista += `-----------------------------------------------------------------`
 
 //CASE 3
 function buscarTipoSangue (){
-
-    let buscar = prompt(`Tipo sanguíneo a procurar:`)
-    const listagem = []
-
-    for(let doador of arrayDoadores){
+ let buscar = prompt(`Tipo sanguíneo a procurar:`)
+ const novoArray = []
+ let lista = `
+ --------------------
+ LISTAGEM DE DOADORES COMPATÍVEIS:
+ --------------------
+ NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
+ -----------------------------------------------------------------
+ 
+ `
+  for(let doador of arrayDoadores){
       if(doador.tipoSangue.toUpperCase() === buscar.toUpperCase()){
-        listagem.push(doador)
+        novoArray.push(doador)
         }
+      }
 
-    let lista = `
-    --------------------
-    LISTAGEM DE DOADORES COMPATÍVEIS:
-    --------------------
-    NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
-    -----------------------------------------------------------------`
+      for(let novoDoador of novoArray){
+        lista += `
+   ${novoDoador.nome.padEnd(20)}|  ${novoDoador.idade.padEnd(5)}|  ${novoDoador.peso.padEnd(5)}|  ${novoDoador.tipoSangue.padEnd(24)}| ${novoDoador.dataDoacao.padEnd(10)}       
+  
+    ` }
 
-
-     for(let doador of listagem){
-          lista += `${doador.nome}    |  ${doador.idade}   |  ${doador.peso}  |      ${doador.tipoSangue}       |   ${doador.dataDoacao} `
-         }
-       
-    lista += `-----------------------------------------------------------------`
-       
-     prompt(lista) 
-    
+  lista += `
+  -----------------------------------------------------------------`
+  prompt(lista) 
   }
-}
+
 
 //CASE 4
 function buscarPorData(){
   let buscarData = prompt(`Data a procurar:`)
-  const listagem = []
-
-  for(let doador of arrayDoadores){
-    if(doador.dataDoacao.toUpperCase() <= buscarData.toUpperCase()){
-      listagem.push(doador)
-      }
-      
+  const novoArray2 = []
   let listaData = `
   --------------------
   DOAÇÕES REALIZADAS EM ${buscarData} E ANTERIORES:
   --------------------
   NOME             | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
-  -----------------------------------------------------------------`
-
-
-   for(let doador of listagem){
-        listaData += `${doador.nome}|  ${doador.idade}   |  ${doador.peso}  |      ${doador.tipoSangue}       |   ${doador.dataDoacao} `
-       }
-     
-  listaData += `-----------------------------------------------------------------`
-     
-   prompt(listaData) 
+  -----------------------------------------------------------------
   
-}
+  `
+
+  const buscaSplit = buscarData.split('/')
+
+  for(let doador of arrayDoadores){
+    const splitDoador = doador.dataDoacao.split('/')
+   
+    if(Number(splitDoador[2]) <= Number(buscaSplit[2])){
+      novoArray2.push(doador)
+      }
+    }
+
+  for(let novoDoador2 of novoArray2){
+    listaData += `${novoDoador2.nome.padEnd(20)}|  ${novoDoador2.idade.padEnd(5)}|  ${novoDoador2.peso.padEnd(5)}|  ${novoDoador2.tipoSangue.padEnd(30)}|  ${novoDoador2.dataDoacao.padEnd(10)}       
+   
+   ` }
+     
+
+  listaData += `
+  -----------------------------------------------------------------`
+     
+  prompt(listaData) 
+  
+
 }
 
 //CASE 5
